@@ -1,0 +1,150 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+    <link rel="stylesheet" href="{% static 'contact_us/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700">
+    <link rel="stylesheet" href="{% static 'contact_us/assets/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact_us/assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact_us/assets/fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact_us/assets/css/Navigation-with-Search.css' %}">
+</head>
+
+<body id="page-top"><header>
+
+    {% if messages %}
+   	{% for message in messages %}
+   		{% if message.tags %}
+   			<script>alert("{{ message }}")</script> 
+   		{% endif %}
+   	{% endfor %}
+  {% endif %}
+  
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+          <a class="navbar-brand" href="#">All About Robotix</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Courses</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Kinematics & Dynamics</a>
+                  <a class="dropdown-item" href="#">Control (Coming Soon)</a>
+                  <a class="dropdown-item" href="#">Computer Vision (Coming Soon)</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Research Simplified</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Techspresso</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+              </li>
+            </ul>
+            <form class="form-inline pr-lg-2" role="search">
+              <div class="form-group" style="display: inline-flex;">
+                  <input type="text" class="form-control" placeholder="Search" style="border-radius: 8px 0px 0px 8px;">
+                  <button type="submit" style="padding-top: 1%; padding-bottom: 2%; border-radius: 0px 8px 8px 0px;"><i class="fa fa-search"></i></button>
+                </div>
+      
+            </form>
+            <a class="btn btn-outline-secondary mr-2" href="{% url 'login' %}">Login</a>
+            <a class="btn btn-outline-secondary" href="{% url 'register' %}">Register</a>
+          </div>
+        </nav>
+    </header>
+    <section id="contact" style="background-image:url('assets/img/map-image.png');">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="text-uppercase section-heading">Contact Us</h2>
+                    <h3 class="section-subheading text-muted" style="border-color: rgb(217,224,231);color: rgb(203,208,211);">Any enquiries or proposals for collaboration?</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form id="contactForm" name="contactForm" novalidate="novalidate" action = "contact" method = "POST">
+                        {% csrf_token%}
+                        <div class="form-row">
+                            <div class="col col-md-6">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" id="name" placeholder="Your Name *" required="" name="name">
+                                    <small class="form-text text-danger flex-grow-1 help-block lead"></small>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="email" id="email" placeholder="Your Email *" required="" name="email">
+                                    <small class="form-text text-danger help-block lead"></small>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="tel" placeholder="Your Phone *" required="" name="number">
+                                    <small class="form-text text-danger help-block lead"></small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <textarea class="form-control" id="message" placeholder="Your Message *" required="" name="msg"></textarea>
+                                    <small class="form-text text-danger help-block lead"></small>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="col-lg-12 text-center">
+                                <div id="success"></div><button class="btn btn-info btn-xl text-uppercase" id="sendMessageButton" type="submit" style="background: rgb(0,123,255);border-color: rgb(255,255,255);">Send Message</button></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 my-auto h-100 text-center text-lg-left">
+                    <ul class="list-inline mb-2">
+                        <li class="list-inline-item"><a href="#" style="color: rgb(12,12,13);">About</a></li>
+                        <li class="list-inline-item"><span>⋅</span></li>
+                        <li class="list-inline-item"><a href="#" style="color: rgb(8,8,8);">Contact</a></li>
+                        <li class="list-inline-item"><span>⋅</span></li>
+                        <li class="list-inline-item"><a href="#" style="color: rgb(16,15,14);">Terms of &nbsp;Use</a></li>
+                        <li class="list-inline-item"><span>⋅</span></li>
+                        <li class="list-inline-item"><a href="#" style="color: rgb(8,8,7);">Privacy Policy</a></li>
+                    </ul>
+                    <p class="text-muted small mb-4 mb-lg-0">© All About Robotix 2020. All Rights Reserved.</p>
+                </div>
+                <div class="col" style="text-align: right;">
+                    <div style="font-size: 25px;"><i class="far fa-envelope" style="padding-right: 14px;font-size: 29px;margin-top: 0px;padding-bottom: 0px;height: 0px;line-height: 57px;"></i><i class="fa fa-linkedin" style="font-size: 35px;padding-right: 14px;"></i><i class="fa fa-instagram"
+                            style="font-size: 30px;"></i></div>
+                </div>
+                <div class="col-lg-6 my-auto h-100 text-center text-lg-right">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="{% static 'contact_us/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'contact_us/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="{% static 'contact_us/assets/js/agency.js' %}"></script>
+</body>
+
+</html>

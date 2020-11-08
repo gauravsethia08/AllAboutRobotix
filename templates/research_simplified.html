@@ -1,0 +1,148 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - All About Robotix</title>
+    <link rel="stylesheet" href="{% static 'research_simplified/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
+    <link rel="stylesheet" href="{% static 'research_simplified/assets/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'research_simplified/assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'research_simplified/assets/fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="{% static 'research_simplified/assets/css/Newsletter-Subscription-Form.css' %}">
+    <link rel="stylesheet" href="{% static 'research_simplified/assets/css/untitled.css' %}">
+</head>
+
+<body><header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+          <a class="navbar-brand" href="#">All About Robotix</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Courses</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Kinematics & Dynamics</a>
+                  <a class="dropdown-item" href="#">Control (Coming Soon)</a>
+                  <a class="dropdown-item" href="#">Computer Vision (Coming Soon)</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Research Simplified</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Techspresso</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+              </li>
+            </ul>
+            <form class="form-inline pr-lg-2" role="search">
+              <div class="form-group" style="display: inline-flex;">
+                  <input type="text" class="form-control" placeholder="Search" style="border-radius: 8px 0px 0px 8px;">
+                  <button type="submit" style="padding-top: 1%; padding-bottom: 2%; border-radius: 0px 8px 8px 0px;"><i class="fa fa-search"></i></button>
+                </div>
+      
+            </form>
+            <a class="btn btn-outline-secondary mr-2" href="{% url 'login' %}">Login</a>
+            <a class="btn btn-outline-secondary" href="{% url 'register' %}">Register</a>
+          </div>
+        </nav>
+    </header>
+    <header class="masthead text-white text-center" style="background: url('assets/img/photos-hobby-rDxP1tF3CmA-unsplash.jpg')no-repeat center center;background-size: cover;">
+        <div class="bg-info overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto" style="text-align: center;">
+                    <h1 style="text-align: center;"><strong>Research Simplified</strong></h1>
+                    <h1></h1>
+                    <h5 style="margin-top: 0px;padding-top: 6px;text-align: center;">We&nbsp;simplify the most esoteric robotics research papers so that anybody can read it and understand it without any difficulties.&nbsp;</h5>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="showcase">
+        <div class="container-fluid p-0">
+            <div class="row no-gutters">
+                <div class="col-lg-6 order-lg-2 text-white showcase-img"><img src = "{% static 'research_simplified/assets/img/bg-showcase-3.jpg' %}" style="width: 100%; height:100%;"><span></span></div>
+                <div class="col-lg-6 my-auto order-lg-1 showcase-text">
+                    <h2 style="width: 546px;height: 38px;">Paper 1</h2>
+                    <p class="lead mb-0" style="height: 170px;text-align: justify;">Abstract of paper 1</p>
+                    <div style="text-align: center;margin-top: 0px;"><i class="fa fa-chevron-circle-right" style="text-align: right;margin-top: 17px;font-size: 31px;"></i></div>
+                </div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col-lg-6 text-white showcase-img"><img src = "{% static 'research_simplified/assets/img/bg-showcase-2.jpg' %}" style="width: 100%; height:100%;"><span></span></div>
+                <div class="col-lg-6 my-auto order-lg-1 showcase-text">
+                    <h2>Paper 2</h2>
+                    <p class="lead mb-0" style="text-align: justify;">Abstract of Paper 2</p>
+                    <div style="text-align: center;margin-top: 0px;"><i class="fa fa-chevron-circle-right" style="text-align: right;margin-top: 17px;font-size: 31px;"></i></div>
+                </div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col-lg-6 order-lg-2 text-white showcase-img"><img src = "{% static 'research_simplified/assets/img/bg-showcase-3.jpg' %}" style="width: 100%; height:100%;"><span></span></div>
+                <div class="col-lg-6 my-auto order-lg-1 showcase-text" style="text-align: left;">
+                    <h2>Paper 3</h2>
+                    <p class="lead mb-0" style="text-align: justify;">Abstract of Paper 3</p>
+                    <div style="text-align: center;margin-top: 0px;"><i class="fa fa-chevron-circle-right" style="text-align: right;margin-top: 17px;font-size: 31px;"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div style="text-align: center;margin-bottom: 41px;"><button class="btn btn-primary btn-sm text-center" data-bs-hover-animate="pulse" type="button" style="margin-top: 36px;font-size: 21px;text-align: left;line-height: 37px;">Continue reading&nbsp;&nbsp;</button></div>
+    <div class="newsletter-subscribe"
+        style="margin-bottom: -74px;">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Subscribe to our Newsletter</h2>
+                <p class="text-center">For the latest updates from All About Robotix!</p>
+            </div>
+            <form class="form-inline" method="post">
+                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Your Email"></div>
+                <div class="form-group"><button class="btn btn-primary" type="submit">Subscribe </button></div>
+            </form>
+        </div>
+    </div>
+    <footer class="footer bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 my-auto h-100 text-center text-lg-left">
+                    <ul class="list-inline mb-2">
+                        <li class="list-inline-item"><a href="#" style="color: rgb(5,5,6);">About</a></li>
+                        <li class="list-inline-item"><span>⋅</span></li>
+                        <li class="list-inline-item"><a href="#" style="color: rgb(9,10,10);">Contact</a></li>
+                        <li class="list-inline-item"><span>⋅</span></li>
+                        <li class="list-inline-item"><a href="#" style="color: rgb(5,6,6);">Terms of &nbsp;Use</a></li>
+                        <li class="list-inline-item"><span>⋅</span></li>
+                        <li class="list-inline-item"><a href="#" style="color: rgb(8,8,8);">Privacy Policy</a></li>
+                    </ul>
+                    <p class="text-muted small mb-4 mb-lg-0">© All About Robotix 2020. All Rights Reserved.</p>
+                </div>
+                <div class="col" style="text-align: right;">
+                    <div style="font-size: 25px;"><i class="far fa-envelope" style="padding-right: 14px;font-size: 29px;margin-top: 0px;padding-bottom: 0px;height: 0px;line-height: 57px;"></i><i class="fa fa-linkedin" style="font-size: 35px;padding-right: 14px;"></i><i class="fa fa-instagram"
+                            style="font-size: 30px;"></i></div>
+                </div>
+                <div class="col-lg-6 my-auto h-100 text-center text-lg-right">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="{% static 'research_simplified/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'research_simplified/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'research_simplified/assets/js/bs-init.js' %}"></script>
+</body>
+
+</html>

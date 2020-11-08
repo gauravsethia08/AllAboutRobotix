@@ -1,0 +1,228 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/journal/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/carousal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>All About Robotix</title>
+  </head>
+
+  
+  <body>
+    {% if messages %}
+   	{% for message in messages %}
+   		{% if message.tags %}
+   			<script>alert("{{ message }}")</script> 
+   		{% endif %}
+   	{% endfor %}
+  {% endif %}
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+          <a class="navbar-brand" href="#">All About Robotix</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Courses</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Kinematics & Dynamics</a>
+                  <a class="dropdown-item" href="#">Control (Coming Soon)</a>
+                  <a class="dropdown-item" href="#">Computer Vision (Coming Soon)</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Research Simplified</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Techspresso</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+              </li>
+            </ul>
+            <form class="form-inline pr-lg-2" role="search">
+              <div class="form-group" style="display: inline-flex;">
+                  <input type="text" class="form-control" placeholder="Search" style="border-radius: 8px 0px 0px 8px;">
+                  <button type="submit" style="padding-top: 1%; padding-bottom: 2%; border-radius: 0px 8px 8px 0px;"><i class="fa fa-search"></i></button>
+                </div>
+      
+            </form>
+            <a class="btn btn-outline-secondary mr-2" href="{% url 'login' %}">Login</a>
+            <a class="btn btn-outline-secondary" href="{% url 'register' %}">Register</a>
+          </div>
+        </nav>
+    </header>
+      
+    <main role="main">
+    
+    <div class="">
+        <!-- <img src="./img/allaboutrobotix-high_res.png" class="mx-auto d-block" style="max-width: 100vh; height: auto;"> -->
+        <!-- <a class="justify-content-center button">Hover me</a> -->
+        <img src="{% static 'img/allaboutrobotix-high_res.png' %}" class="img-fluid main-image" style="" usemap="#image-map">
+
+        <map name="image-map">
+            <area target="_blank" alt="" title="" href="https://google.com/" coords="1456,532,144" shape="circle">
+            <area target="_blank" alt="" title="" href="https://amazon.in" coords="826,951,147" shape="circle">
+            <area target="_blank" alt="" title="" href="https://microsoft.com/" coords="2042,954,149" shape="circle">
+        </map>
+    </div>
+    
+    
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+    
+    <div class="container marketing">
+        <div class="row">
+          <div class="col-sm-3 card border-info pl-0 pr-0 my-card">
+            <div class="card-header text-center"><h4>Kinematics & Dynamics</h4></div>
+            <img src="{% static 'img/robotic-arm.svg' %}" class="card-img-top pt-5" style="width: 50%; margin: 0% 25% 0% 25%;">
+            <div class="card-body">
+              <p class="card-text text-justify">Acquaint yourselves with foundations of how Robot manipulators move and dance to the mathematical music of Linear Algebra!</p>
+              <a href="#" class="btn btn-outline-info" style="margin-right: 25%; margin-left: 25%; padding-left: 5%; padding-right: 5%;">Start Course</a>
+            </div>
+          </div>
+          <div class="col-sm-3 card border-info pl-0 pr-0 my-card">
+            <div class="card-header text-center" style="padding-right: 25%; padding-left: 25%;"><h4>Control</h4></div>
+            <img src="{% static 'img/40031.png' %}" class="card-img-top pt-5" style="width: 50%; margin: 0% 25% 0% 25%;">
+            <div class="card-body">
+              <p class="card-text text-justify">Explore the world of control systems for Robots for planned sequences and functionalities through classical and modern approaches!</p>
+              <a href="#" class="btn btn-outline-info" style="margin-right: 25%; margin-left: 25%; padding-left: 5%; padding-right: 5%;">Coming Soon</a>
+            </div>
+          </div>
+          <div class="col-sm-3 card border-info pl-0 pr-0 my-card">
+            <div class="card-header text-center"><h4>Computer Vision</h4></div>
+            <img src="{% static 'img/visual.svg' %}" class="card-img-top pt-5" style="width: 50%; margin: 0% 25% 0% 25%;">
+            <div class="card-body">
+              <p class="card-text text-justify">Develop a theoretical intuition and deploy practical applications for classical and state-of-the-ardeep learning based computer vision problems on your robots!</p>
+              <a href="#" class="btn btn-outline-info" style="margin-right: 25%; margin-left: 25%; padding-left: 5%; padding-right: 5%;">Coming Soon</a>
+            </div>
+          </div>
+        </div>
+    </div>
+        <!-- Carousel -->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin:0%">
+          <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+          <div class="carousel-item active">
+              <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+              <div class="container">
+              <div class="carousel-caption text-left">
+                  <h1>Example headline.</h1>
+                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                  <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+              </div>
+              </div>
+          </div>
+          <div class="carousel-item">
+              <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+              <div class="container">
+              <div class="carousel-caption">
+                  <h1>Another example headline.</h1>
+                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                  <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+              </div>
+              </div>
+          </div>
+          <div class="carousel-item">
+              <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+              <div class="container">
+              <div class="carousel-caption text-right">
+                  <h1>One more for good measure.</h1>
+                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                  <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+              </div>
+              </div>
+          </div>
+          </div>
+          <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+          </a>
+        </div>
+    
+        <div class="container marketing">
+        <!-- START THE FEATURETTES -->
+    
+        <div class="row featurette p-5">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+        </div>
+        </div>
+    
+        <hr class="featurette-divider">
+    
+        <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+        </div>
+        </div>
+    
+        <hr class="featurette-divider">
+    
+        <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+        </div>
+        </div>
+    
+        <hr class="featurette-divider">
+    
+        <!-- /END THE FEATURETTES -->
+    
+    </div><!-- /.container -->
+    
+    
+    <!-- FOOTER -->
+    <footer class="container">
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2017-2020 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
+    </main>
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/image-map@2.0.1/dist/image-map.js"></script>
+    <script>
+      ImageMap('img[usemap]', 500);
+    </script>
+  </body>
+</html>

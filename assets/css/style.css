@@ -1,0 +1,23 @@
+.main-image{
+    max-width: 50%; 
+    height: auto; 
+    margin: 0% 25% 0% 25%;
+}
+
+.my-card {
+    margin: 4%;
+}
+
+@media only screen and (max-width: 800px) {
+    .main-image {
+      max-width: 100%;
+      margin: 0%;
+      padding: 0%;
+      padding-left: 2%;
+    }
+
+    .my-card {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+  }
