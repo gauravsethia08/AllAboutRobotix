@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'blog.apps.BlogConfig', 
     'home_page.apps.HomePageConfig',
     'account.apps.AccountConfig',
     'django.contrib.admin',
@@ -127,3 +128,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'assets')
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

@@ -1,0 +1,117 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/journal/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/carousal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>All About Robotix</title>
+  </head>
+
+  
+  <body>
+    {% if messages %}
+   	{% for message in messages %}
+   		{% if message.tags %}
+   			<script>alert("{{ message }}")</script> 
+   		{% endif %}
+   	{% endfor %}
+  {% endif %}
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+          <a class="navbar-brand" href="/">All About Robotix</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Courses</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Kinematics & Dynamics</a>
+                  <a class="dropdown-item" href="#">Control (Coming Soon)</a>
+                  <a class="dropdown-item" href="#">Computer Vision (Coming Soon)</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'research' %}">Research Simplified</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'techspresso' %}">Techspresso</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+              </li>
+            </ul>
+            <form class="form-inline pr-lg-2" role="search">
+              <div class="form-group" style="display: inline-flex;">
+                  <input type="text" class="form-control" placeholder="Search" style="border-radius: 8px 0px 0px 8px;">
+                  <button type="submit" style="padding-top: 1%; padding-bottom: 2%; border-radius: 0px 8px 8px 0px;"><i class="fa fa-search"></i></button>
+                </div>
+      
+            </form>
+            {% if user.is_authenticated %}
+            <a class="navbar-brand" href="#">Howdy, {{user.name}}</a>
+              <a class="btn btn-outline-secondary mr-2" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+              <a class="btn btn-outline-secondary mr-2" href="{% url 'login' %}">Login</a>
+              <a class="btn btn-outline-secondary" href="{% url 'register' %}">Register</a>
+            {% endif %}
+          </div>
+        </nav>
+    </header>
+
+        {% block content%}
+
+        {% endblock %}
+    
+    <!-- FOOTER -->
+    <footer class="footer bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 my-auto h-100 text-center text-lg-left">
+                    <ul class="list-inline mb-2">
+                        <li class="list-inline-item"><a href="#" style="color: rgb(12,12,13);">About</a></li>
+                        <li class="list-inline-item"><span>⋅</span></li>
+                        <li class="list-inline-item"><a href="#" style="color: rgb(8,8,8);">Contact</a></li>
+                        <li class="list-inline-item"><span>⋅</span></li>
+                        <li class="list-inline-item"><a href="#" style="color: rgb(16,15,14);">Terms of &nbsp;Use</a></li>
+                        <li class="list-inline-item"><span>⋅</span></li>
+                        <li class="list-inline-item"><a href="#" style="color: rgb(8,8,7);">Privacy Policy</a></li>
+                    </ul>
+                    <p class="text-muted small mb-4 mb-lg-0">© All About Robotix 2020. All Rights Reserved.</p>
+                </div>
+                <div class="col" style="text-align: right;">
+                    <div style="font-size: 25px;"><i class="far fa-envelope" style="padding-right: 14px;font-size: 29px;margin-top: 0px;padding-bottom: 0px;height: 0px;line-height: 57px;"></i><i class="fa fa-linkedin" style="font-size: 35px;padding-right: 14px;"></i><i class="fa fa-instagram"
+                            style="font-size: 30px;"></i></div>
+                </div>
+                <div class="col-lg-6 my-auto h-100 text-center text-lg-right">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/image-map@2.0.1/dist/image-map.js"></script>
+    <script>
+      ImageMap('img[usemap]', 500);
+    </script>
+  </body>
+</html>
