@@ -33,7 +33,13 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
   email = models.EmailField(max_length=254, unique=True)
-  name = models.CharField(max_length=254, null=True, blank=True)
+  name = models.CharField(max_length=254, null=True, blank=True, default='')
+  institution = models.CharField(max_length=50, default='None')
+  github = models.CharField(max_length=50, default='None')
+  address = models.CharField(max_length=200, default='None')
+  city = models.CharField(max_length=20, default='None')
+  country = models.CharField(max_length=30, default='None')
+  profile_img = models.ImageField(upload_to = 'pics')
   is_staff = models.BooleanField(default=False)
   is_superuser = models.BooleanField(default=False)
   is_active = models.BooleanField(default=True)
@@ -44,7 +50,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
   USERNAME_FIELD = 'email'
   EMAIL_FIELD = 'email'
-  REQUIRED_FIELDS = []
+  REQUIRED_FIELDS = ['name']
 
   objects = UserManager()
 

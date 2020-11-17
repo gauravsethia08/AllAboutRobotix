@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from .models import Contact
 
 # Create your views here.
 def home(request):
@@ -14,7 +15,8 @@ def contact(request):
         number = request.POST['number']
         msg = request.POST['msg']
 
-        print(name, " ", email, " ", number, " ", msg)
+        contact_query = Contact(name = name, email = email, contact_no = number, message = msg)
+        contact_query.save()
 
         messages.error(request, "We have got your query. We will contact you shortly")
         return HttpResponseRedirect('/')

@@ -20,7 +20,7 @@
 
 <body>
     {% block content %}
-    <header class="masthead text-white text-center" style="background: url('{% static 'techspresso/assets/img/photos-hobby-rDxP1tF3CmA-unsplash.jpg' %}')no-repeat center center;background-size: cover;">
+    <header class="masthead text-white text-center" style="background: url('{% static 'techspresso/assets/img/photos-hobby-rDxP1tF3CmA-unsplash.jpg' %}')no-repeat center center;background-size: cover; padding-top:12rem; padding-bottom:12rem;">
         <div class="bg-info overlay"></div>
         <div class="container">
             <div class="row">
@@ -39,19 +39,26 @@
                     {% if blog.id|divisibleby:2 %}
                         <div class="row no-gutters">
                             <div class="col-lg-6 order-lg-2 text-white showcase-img"><img src = "{{ blog.img.url }}" style="width: 100%; height:100%;"><span></span></div>
-                            <div class="col-lg-6 my-auto order-lg-1 showcase-text">
+                            <div class="col-lg-6 my-auto order-lg-1 showcase-text" style="padding-right:7rem; padding-left:7rem;">
                                 <h2 style="width: 546px;height: 38px;">{{blog.title}}</h2>
-                                <p class="lead mb-0" style="height: 170px;text-align: justify;">Abstract of art 1</p>
-                                <div style="text-align: center;margin-top: 0px;"><i class="fa fa-chevron-circle-right" style="text-align: right;margin-top: 17px;font-size: 31px;"></i></div>
+                                <p class="lead mb-0" style="height: 170px;text-align: justify;">{{ blog.abstract }}</p>
+                                <div style="text-align: center;margin-top: 0px;">
+                                    <a href="{% url 'techh_detail' blog.id %}">
+                                        <i class="fa fa-chevron-circle-right" style="text-align: right;margin-top: 17px;font-size: 31px;"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     {% else %}
                         <div class="row no-gutters">
                             <div class="col-lg-6 text-white showcase-img"><img src = "{{ blog.img.url }}" style="width: 100%; height:100%;"><span></span></div>
-                            <div class="col-lg-6 my-auto order-lg-1 showcase-text">
-                                <h2 style="width: 546px;height: 38px;">{{blog.title}}</h2>
-                                <p class="lead mb-0" style="height: 170px;text-align: justify;">Abstract of art 1</p>
-                                <div style="text-align: center;margin-top: 0px;"><i class="fa fa-chevron-circle-right" style="text-align: right;margin-top: 17px;font-size: 31px;"></i></div>
+                            <div class="col-lg-6 my-auto order-lg-1 showcase-text" style="padding-right:7rem; padding-left:7rem;">
+                                <h2 style="width: 546px;height: 38px;">{{blog.title}}</h2>{{ blog.abstract }}</p>
+                                <div style="text-align: center;margin-top: 0px;">
+                                    <a href="{% url 'techh_detail' blog.id %}">
+                                        <i class="fa fa-chevron-circle-right" style="text-align: right;margin-top: 17px;font-size: 31px;"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     {% endif %}
@@ -64,13 +71,13 @@
         </div>
     </section>
     <div class="newsletter-subscribe"
-        style="margin-bottom: -74px;">
+        style="margin-bottom: 74px;">
         <div class="container">
-            <div class="intro">
-                <h2 class="text-center">Subscribe to our Newsletter</h2>
-                <p class="text-center">For the latest updates from All About Robotix!</p>
+            <div class="intro" >
+                <h2 class="text-center" style="padding: 1%;">Subscribe to our Newsletter</h2>
+                <p class="text-center" style="padding: 1%;">For the latest updates from All About Robotix!</p>
             </div>
-            <form class="form-inline" method="post">
+            <form class="form-inline" method="post" style="justify-content: center;">
                 <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Your Email"></div>
                 <div class="form-group"><button class="btn btn-primary" type="submit">Subscribe </button></div>
             </form>

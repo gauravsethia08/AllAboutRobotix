@@ -21,7 +21,7 @@
 
 <body id="page-top"><header>
     {% block content %}
-    <section id="contact" style="background-image:url('assets/img/map-image.png');">
+    <section id="contact" style="background-image:url('{% static 'contact_us/assets/img/bg.jpg' %}'); padding-top:12rem; padding-bottom:12rem;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -69,7 +69,7 @@
     <script src="{% static 'contact_us/assets/js/jquery.min.js' %}"></script>
     <script src="{% static 'contact_us/assets/bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <script src="{% static 'contact_us/assets/js/agency.js' %}"></script>
+    <!--script src="{% static 'contact_us/assets/js/agency.js' %}"></script-->
 
     {% endblock %}
 </body>

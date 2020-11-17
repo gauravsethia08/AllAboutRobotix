@@ -1,9 +1,13 @@
 #Importing Libraries
 from django.urls import path
+from .views import IROSListView, TechListView, ResearchListView, IROSDetailView, ResearchDetailView, TechDetailView
 from . import views
 
 urlpatterns = [
-    path('techspresso', views.techspresso, name = "techspresso"),
-    path('iros2020', views.iros, name = "iros"),
-    path('research', views.research, name = "research"),
+    path('techspresso', TechListView.as_view(), name = "techspresso"),
+    path('iros2020', IROSListView.as_view(), name = "iros"),
+    path('iros2020/<int:pk>/', IROSDetailView.as_view(), name = "iros_detail"),
+    path('techspresso/<int:pk>/', TechDetailView.as_view(), name = "tech_detail"),
+    path('research/<int:pk>/', ResearchDetailView.as_view(), name = "research_detail"),
+    path('research', ResearchListView.as_view(), name = "research"),
 ]

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+    {% block content%}
+
+        <iframe src="{{ blog.pdf_file.url }}" width="100%" height="100%"/>
+
+    
+        <!--script>PDFObject.embed("{{ blog.pdf_file.url }}", "#example1");</script-->
+
+    {% endblock %}
