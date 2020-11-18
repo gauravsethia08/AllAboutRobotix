@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>meet_the_team</title>
+    <link rel="stylesheet" href="{% static 'team/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'team/assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'team/assets/css/Article-List.css' %}">
+    <link rel="stylesheet" href="{% static 'team/assets/css/styles.css' %}">
+</head>
+
+<body>
+    <div class="article-list">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Meet the team!</h2>
+                <p class="text-center">We are team of passionate Roboticists working on making Robotics accessible and ubiquitous!&nbsp;</p>
+            </div>
+            <div class="row articles">
+                <div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="{% static 'team/assets/img/Shivani.png' %}"></a>
+                    <h3 class="name">Shivani Sivakumar</h3>
+                    <p class="description">Intro</p><a class="action" href="#"><i class="fa fa-linkedin-square" style="background: url(&quot;https://cdn.bootstrapstudio.io/placeholders/1400x800.png&quot;), url(&quot;https://cdn.bootstrapstudio.io/placeholders/1400x800.png&quot;);"></i></a></div>
+                <div
+                    class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="{% static 'team/assets/img/kaushik.jpg' %}"></a>
+                    <h3 class="name">Kaushik Balasundar</h3>
+                    <p class="description">Intro</p><a class="action" href="#"><i class="fa fa-linkedin-square"></i></a></div>
+            <div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="{% static 'team/assets/img/sid.jpg' %}"></a>
+                <h3 class="name">Siddharth Ghodasara</h3>
+                <p class="description">Intro</p><a class="action" href="#"><i class="fa fa-linkedin-square"></i></a></div>
+        </div>
+    </div>
+    </div>
+    <div class="article-list">
+        <div class="container">
+            <div class="intro"></div>
+            <div class="row articles">
+                <div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="{% static 'team/assets/img/gaurav.jpeg' %}"></a>
+                    <h3 class="name">Gaurav Sethia</h3>
+                    <p class="description">Intro</p><a class="action" href="#"><i class="fa fa-linkedin-square"></i></a></div>
+                <div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="{% static 'team/assets/img/vineet.png' %}"></a>
+                    <h3 class="name">Vineet Ranjan</h3>
+                    <p class="description">Intro</p><a class="action" href="#"><i class="fa fa-linkedin-square"></i></a></div>
+                <div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="{% static 'team/assets/img/loft.jpg' %}"></a>
+                    <h3 class="name">Want to join us?&nbsp;</h3>
+                    <p class="description">Follow this link to get in touch and learn how!</p><a class="action" href="#"><i class="fa fa-linkedin-square"></i></a></div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'team/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'team/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>
+{% endblock %}

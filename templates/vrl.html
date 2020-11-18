@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html style="text-align: center;margin: -1px;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>virtual_robotics_lab</title>
+    <link rel="stylesheet" href="{% static 'vrl/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vrl/assets/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vrl/assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vrl/assets/fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
+    <link rel="stylesheet" href="{% static 'vrl/assets/css/Simple-Slider.css' %}">
+    <link rel="stylesheet" href="{% static 'vrl/assets/css/styles.css' %}">
+</head>
+
+<body style="min-height: 646px;"><header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center" style="margin: 26px;">Virtual Robotics Lab (Coming Soon)</h1>
+                    <div style="margin: 8px;height: 87px;text-align: center;"><button class="btn btn-primary" type="button" style="margin: -1px;height: 60px;padding: 3px;text-align: center;font-size: 27px;width: 224px;">Experiment Now!</button></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6" style="margin: 0px;height: 213px;width: 567px;">
+                    <div class="card" style="height: 244px;">
+                        <div class="card-body">
+                            <h4 class="card-title" style="height: 29px;font-size: 28px;">About the Lab</h4>
+                            <h6 class="text-muted card-subtitle mb-2">What is VRL?</h6>
+                            <p class="card-text" style="text-align: justify;">Robotics hardware is expensive and time consuming, leaving many people unable to get access to state-of-the-hardware, sometimes any hardware! We're here to bridge that gap - state-of-the-art hardware at affordable prices!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card" style="height: 244px;">
+                        <div class="card-body" style="height: 241px;">
+                            <h4 class="card-title" style="height: 26px;font-size: 28px;">Coming Soon</h4>
+                            <h6 class="text-muted card-subtitle mb-2">Material Includes&nbsp;</h6>
+                            <ul>
+                                <li>Remote access to Robotic Manipulator</li>
+                                <li>10+ Learning experiments to test your theoretical knowledge!&nbsp;</li>
+                                <li>Collaborative Learning</li>
+                                <li>User-friendly interface &amp; support&nbsp; &nbsp;&nbsp;</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="height: 576px;width: 1133px;"><img class="d-sm-inline-flex d-lg-flex" src="{% static 'vrl/assets/img/courses_pic_1.jpg' %}" style="height: 563px;margin: -2px;padding: 35px;width: 1112px;"></div>
+    <!--div class="simple-slider">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background-image:url(https://placeholdit.imgix.net/~text?txtsize=68&amp;txt=Slideshow+Image&amp;w=1920&amp;h=500);">
+                    <h1 style="text-align: center;height: 201px;font-size: 40px;">Experiment 1</h1>
+                    <h1 style="text-align: center;height: 57px;min-height: -1px;font-size: 33px;">Outcome</h1>
+                    <p style="text-align: center;">Description&nbsp;</p>
+                </div>
+                <div class="swiper-slide" style="background-image:url(https://placeholdit.imgix.net/~text?txtsize=68&amp;txt=Slideshow+Image&amp;w=1920&amp;h=500);">
+                    <h1 style="text-align: center;height: 201px;font-size: 40px;">Module 2</h1>
+                    <h1 style="text-align: center;height: 57px;min-height: -1px;font-size: 33px;">Transformations</h1>
+                    <p style="text-align: center;">Description&nbsp;</p>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div-->
+
+    <script src="{% static 'vrl/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'vrl/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
+    <script src="{% static 'vrl/assets/js/Simple-Slider.js' %}"></script>
+</body>
+
+</html>
+{% endblock %}

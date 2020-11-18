@@ -10,4 +10,5 @@ urlpatterns = [
     path('techspresso/<int:pk>/', TechDetailView.as_view(), name = "tech_detail"),
     path('research/<int:pk>/', ResearchDetailView.as_view(), name = "research_detail"),
     path('research', ResearchListView.as_view(), name = "research"),
+    path('subscribe', views.subscribe, name = "subscribe")
 ]

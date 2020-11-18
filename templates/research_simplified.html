@@ -78,8 +78,9 @@
                 <h2 class="text-center" style="padding: 1%;">Subscribe to our Newsletter</h2>
                 <p class="text-center" style="padding: 1%;">For the latest updates from All About Robotix!</p>
             </div>
-            <form class="form-inline" method="post" style="justify-content: center;">
-                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Your Email"></div>
+            <form class="form-inline" action="subscribe" style="justify-content: center;">
+                {% csrf_token %}
+                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Your Email"/></div>
                 <div class="form-group"><button class="btn btn-primary" type="submit">Subscribe </button></div>
             </form>
         </div>
