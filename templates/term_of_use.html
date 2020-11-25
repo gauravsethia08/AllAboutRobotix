@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Payment - Brand</title>
+    <link rel="stylesheet" href="{% static 'blog_post/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="{% static 'blog_post/assets/css/smoothproducts.css' %}">
+</head>
+
+<body>
+    {% block content %}
+    <main class="page payment-page">
+        <section class="clean-block payment-form dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h1 class="text-center" style="margin-top: 5%;">{{ blog.title }}</h1>
+                    <p class="text-center" style="font-size: 120%;"> {{ blog.abstract }}</p>
+                </div>
+                <div class="products" style="margin-top: 5%; margin-bottom: 5%; font-size: 120%">{{ blog.content|safe }}</div>
+            </div>
+        </section>
+    </main>
+    {% endblock %}
+    <script src="{% static 'blog_post/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'blog_post/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="{% static 'blog_post/assets/js/smoothproducts.min.js' %}"></script>
+    <script src="{% static 'blog_post/assets/js/theme.js' %}"></script>
+</body>
+
+</html>

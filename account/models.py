@@ -39,7 +39,7 @@ class User(AbstractBaseUser, PermissionsMixin):
   address = models.CharField(max_length=200, default='None')
   city = models.CharField(max_length=20, default='None')
   country = models.CharField(max_length=30, default='None')
-  profile_img = models.ImageField(upload_to = 'pics')
+  profile_img = models.ImageField(upload_to = 'pics', default='None')
   is_staff = models.BooleanField(default=False)
   is_superuser = models.BooleanField(default=False)
   is_active = models.BooleanField(default=True)

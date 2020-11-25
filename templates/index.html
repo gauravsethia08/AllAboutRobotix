@@ -28,9 +28,9 @@
         <img src="{% static 'img/allaboutrobotix-high_res.png' %}" class="img-fluid main-image" style="" usemap="#image-map">
 
         <map name="image-map">
-            <area target="_blank" alt="" title="" href="https://google.com/" coords="1456,532,144" shape="circle">
-            <area target="_blank" alt="" title="" href="https://amazon.in" coords="826,951,147" shape="circle">
-            <area target="_blank" alt="" title="" href="https://microsoft.com/" coords="2042,954,149" shape="circle">
+            <area  alt="" title="" href="{% url 'computer_vision' %}" coords="1456,532,144" shape="circle">
+            <area  alt="" title="" href="{% url 'control' %}" coords="826,951,147" shape="circle">
+            <area  alt="" title="" href="{% url 'kinematics' %}" coords="2042,954,149" shape="circle">
         </map>
     </div>
     
@@ -46,7 +46,7 @@
             <img src="{% static 'img/robotic-arm.svg' %}" class="card-img-top pt-5" style="width: 50%; margin: 0% 25% 0% 25%;">
             <div class="card-body">
               <p class="card-text text-justify">Acquaint yourselves with foundations of how Robot manipulators move and dance to the mathematical music of Linear Algebra!</p>
-              <a href="#" class="btn btn-outline-info" style="margin-right: 25%; margin-left: 25%; padding-left: 5%; padding-right: 5%;">Coming Soon</a>
+              <a href="{% url 'kinematics' %}" class="btn btn-outline-info" style="margin-right: 25%; margin-left: 25%; padding-left: 5%; padding-right: 5%;">Coming Soon</a>
             </div>
           </div>
           <div class="col-sm-3 card border-info pl-0 pr-0 my-card">
@@ -54,7 +54,7 @@
             <img src="{% static 'img/40031.png' %}" class="card-img-top pt-5" style="width: 50%; margin: 0% 25% 0% 25%;">
             <div class="card-body">
               <p class="card-text text-justify">Explore the world of control systems for Robots for planned sequences and functionalities through classical and modern approaches!</p>
-              <a href="#" class="btn btn-outline-info" style="margin-right: 25%; margin-left: 25%; padding-left: 5%; padding-right: 5%;">Coming Soon</a>
+              <a href="{% url 'control' %}" class="btn btn-outline-info" style="margin-right: 25%; margin-left: 25%; padding-left: 5%; padding-right: 5%;">Coming Soon</a>
             </div>
           </div>
           <div class="col-sm-3 card border-info pl-0 pr-0 my-card">
@@ -62,7 +62,7 @@
             <img src="{% static 'img/visual.svg' %}" class="card-img-top pt-5" style="width: 50%; margin: 0% 25% 0% 25%;">
             <div class="card-body">
               <p class="card-text text-justify">Develop a theoretical intuition and deploy practical applications for classical and state-of-the-ardeep learning based computer vision problems on your robots!</p>
-              <a href="#" class="btn btn-outline-info" style="margin-right: 25%; margin-left: 25%; padding-left: 5%; padding-right: 5%;">Coming Soon</a>
+              <a href="{% url 'computer_vision' %}" class="btn btn-outline-info" style="margin-right: 25%; margin-left: 25%; padding-left: 5%; padding-right: 5%;">Coming Soon</a>
             </div>
           </div>
         </div>
@@ -79,9 +79,9 @@
               <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
               <div class="container">
               <div class="carousel-caption text-left">
-                  <h1>Example headline.</h1>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                  <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                  <h1>{{iros.title}}</h1>
+                  <p>{{iros.abstract}}</p>
+                  <p><a class="btn btn-lg btn-primary" href="{% url 'iros_detail' iros.id %}" role="button">Read More</a></p>
               </div>
               </div>
           </div>
@@ -89,9 +89,9 @@
               <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
               <div class="container">
               <div class="carousel-caption">
-                  <h1>Another example headline.</h1>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                  <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                  <h1>{{tech.title}}</h1>
+                  <p>{{tech.abstract}}</p>
+                  <p><a class="btn btn-lg btn-primary" href="{% url 'tech_detail' tech.id %}" role="button">Read More</a></p>
               </div>
               </div>
           </div>
@@ -99,9 +99,9 @@
               <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
               <div class="container">
               <div class="carousel-caption text-right">
-                  <h1>One more for good measure.</h1>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                  <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                  <h1>{{research.title}}</h1>
+                  <p>{{research.abstract}}</p>
+                  <p><a class="btn btn-lg btn-primary" href="{% url 'research_detail' research.id %}" role="button">Read More</a></p>
               </div>
               </div>
           </div>
@@ -169,14 +169,14 @@
                   We will shortly be releasing courses that focused on different fields of Robotics, while allowing you to collaborate on interdisciplinary projects with other learners on our website.
                   We are really excited to bring you this platform, we hope you are too!
                   </p>
-                  <a href="{% url 'team' %}" class="h4">Meet the Team</a>
+                  <a href="{% url 'team' %}" class="" style="text-align: center; font-size: 250%;">Meet the Team</a>
                </p>
           </div>
     
         <!-- /END THE FEATURETTES -->
     
     </div><!-- /.container -->
-    
+    {% endblock %}
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
@@ -185,7 +185,5 @@
     <script>
       ImageMap('img[usemap]', 500);
     </script>
-
-    {% endblock %}
   </body>
 </html>

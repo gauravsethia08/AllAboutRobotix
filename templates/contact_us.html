@@ -21,7 +21,7 @@
 
 <body id="page-top"><header>
     {% block content %}
-    <section id="contact" style="background-image:url('{% static 'contact_us/assets/img/bg.jpg' %}'); padding-top:12rem; padding-bottom:12rem;">
+    <section id="contact" style=" padding-top:12rem; padding-bottom:12rem;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -29,7 +29,7 @@
                     <h3 class="section-subheading text-muted" style="border-color: rgb(217,224,231);color: rgb(203,208,211);">Any enquiries or proposals for collaboration?</h3>
                 </div>
             </div>
-            <div class="row">
+            <div class="row my-3">
                 <div class="col-lg-12">
                     <form id="contactForm" name="contactForm" novalidate="novalidate" action = "contact" method = "POST">
                         {% csrf_token%}
@@ -50,7 +50,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <textarea class="form-control" id="message" placeholder="Your Message *" required="" name="msg"></textarea>
+                                    <textarea class="form-control" rows="5" id="message" placeholder="Your Message *" required="" name="msg"></textarea>
                                     <small class="form-text text-danger help-block lead"></small>
                                 </div>
                             </div>
@@ -58,20 +58,20 @@
                                 <div class="clearfix"></div>
                             </div>
                             <div class="col-lg-12 text-center">
-                                <div id="success"></div><button class="btn btn-info btn-xl text-uppercase" id="sendMessageButton" type="submit" style="background: rgb(0,123,255);border-color: rgb(255,255,255);">Send Message</button></div>
+                                <div id="success"></div><button class="btn btn-primary my-2 text-uppercase" id="sendMessageButton" type="submit">Send Message</button></div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </section>
-
+    {% endblock %}
     <script src="{% static 'contact_us/assets/js/jquery.min.js' %}"></script>
     <script src="{% static 'contact_us/assets/bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <!--script src="{% static 'contact_us/assets/js/agency.js' %}"></script-->
 
-    {% endblock %}
+    
 </body>
 
 </html>

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Blog - All About Robotix</title>
+    <link rel="stylesheet" href="{% static 'blog/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="{% static 'blog/assets/css/smoothproducts.css' %}">
+</head>
+
+<body>
+    {% block content %}
+    <main class="page blog-post-list">
+        <section class="clean-block clean-blog-list dark" style="padding: 68px;">
+        <div class="col-xl-9 mx-auto" style="height: 79px;padding: 2px;">
+            <h1><strong>Search Result</strong></h1>
+        </div>
+        <p></p>
+        {% if posts|length != 0 %}
+        <div class="block-content" style="padding: 5%;">
+            {% for blog in posts %}
+                {% if blog.make_public %}
+                    <div class="col-xl-9 mx-auto clean-blog-post" style="padding-bottom: 70px;">
+                        <div class="row">
+                            <div class="col-lg-5"><img class="rounded img-fluid" src="{{ blog.img.url }}"></div>
+                            <div class="col-lg-7">
+                                <h3>{{blog.title}}</h3>
+                                <div class="info"><span class="text-muted">{{ blog.date_posted }}</span></div>
+                                <p>{{ blog.abstract }}</p>
+                                <button class="btn btn-outline-primary btn-sm" type="button">
+                                    <a href="{% url 'iros_detail' blog.id %}">Go to post</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+            
+        {% else %}
+            <div style="padding-left: 15%;">
+                Your search - <b>{{query}}</b> - did not match any documents.
+                <br>
+                Suggestions:
+                <ul>
+                    <li>Make sure that all words are spelled correctly.</li>
+                    <li>Try different keywords.</li>
+                    <li>Try more general keywords.</li>
+                </ul>
+            </div>
+        {% endif %}
+        </section>
+    </main>
+    {% endblock %}
+    <script src="{% static 'blog/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'blog/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="{% static 'blog/assets/js/smoothproducts.min.js' %}"></script>
+    <script src="{% static 'blog/assets/js/theme.js' %}"></script>
+</body>
+
+</html>

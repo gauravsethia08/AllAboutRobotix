@@ -1,94 +1,66 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Home - All About Robotix</title>
-    <link rel="stylesheet" href="{% static 'research_simplified/assets/bootstrap/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
-    <link rel="stylesheet" href="{% static 'research_simplified/assets/fonts/fontawesome-all.min.css' %}">
-    <link rel="stylesheet" href="{% static 'research_simplified/assets/fonts/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'research_simplified/assets/fonts/fontawesome5-overrides.min.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="{% static 'research_simplified/assets/css/Newsletter-Subscription-Form.css' %}">
-    <link rel="stylesheet" href="{% static 'research_simplified/assets/css/untitled.css' %}">
+    <title>Blog - All About Robotix</title>
+    <link rel="stylesheet" href="{% static 'blog/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="{% static 'blog/assets/css/smoothproducts.css' %}">
 </head>
 
 <body>
     {% block content %}
-    <header class="masthead text-white text-center" style="background: url('{% static 'research_simplified/assets/img/photos-hobby-rDxP1tF3CmA-unsplash.jpg' %}')no-repeat center center;background-size: cover; padding-top:12rem; padding-bottom:12rem;">
-        <div class="bg-info overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-9 mx-auto" style="text-align: center;">
-                    <h1 style="text-align: center;"><strong>Research Simplified</strong></h1>
-                    <h1></h1>
-                    <h5 style="margin-top: 0px;padding-top: 6px;text-align: center;">We&nbsp;simplify the most esoteric robotics research papers so that anybody can read it and understand it without any difficulties.&nbsp;</h5>
+    <main class="page blog-post-list">
+        <section class="clean-block clean-blog-list dark" style="padding: 68px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 mx-auto" style="text-align: center;height: 79px;padding: 2px;">
+                        <h1 style="text-align: center;height: 89px;"><strong>Research Simplified</strong></h1>
+                    </div>
                 </div>
             </div>
-        </div>
-    </header>
-    <section class="showcase">
-        <div class="container-fluid p-0">
-            {% if data|length != 0 %}
-                {% for blog in data %}
-                    {% if blog.id|divisibleby:2 %}
-                        <div class="row no-gutters">
-                            <div class="col-lg-6 order-lg-2 text-white showcase-img"><img src = "{{ blog.img.url }}" style="width: 100%; height:100%;"><span></span></div>
-                            <div class="col-lg-6 my-auto order-lg-1 showcase-text" style="padding-right:7rem; padding-left:7rem;">
-                                <h2 style="width: 546px;height: 38px;">{{blog.title}}</h2>
-                                <p class="lead mb-0" style="height: 170px;text-align: justify;">{{ blog.abstract }}</p>
-                                <div style="text-align: center;margin-top: 0px;">
-                                    <a href="{% url 'research_detail' blog.id %}">
-                                        <i class="fa fa-chevron-circle-right" style="text-align: right;margin-top: 17px;font-size: 31px;"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    {% else %}
-                        <div class="row no-gutters">
-                            <div class="col-lg-6 text-white showcase-img"><img src = "{{ blog.img.url }}" style="width: 100%; height:100%;"><span></span></div>
-                            <div class="col-lg-6 my-auto order-lg-1 showcase-text" style="padding-right:7rem; padding-left:7rem;"">
-                                <h2 style="width: 546px;height: 38px;">{{blog.title}}</h2>
-                                <p class="lead mb-0" style="height: 170px;text-align: justify;">{{ blog.abstract }}</p>
-                                <div style="text-align: center;margin-top: 0px;">
-                                    <a href="{% url 'research_detail' blog.id %}">
-                                        <i class="fa fa-chevron-circle-right" style="text-align: right;margin-top: 17px;font-size: 31px;"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    {% endif %}
-                {% endfor %}
-                <div style="text-align: center;margin-bottom: 41px;"><button class="btn btn-primary btn-sm text-center" data-bs-hover-animate="pulse" type="button" style="margin-top: 36px;font-size: 21px;text-align: left;line-height: 37px;">Continue reading&nbsp;&nbsp;</button></div>
-
-            {% else %}
-                <div style="text-align: center;margin-bottom: 41px;"><button class="btn btn-primary btn-sm text-center" data-bs-hover-animate="pulse" type="button" style="margin-top: 36px;font-size: 21px;text-align: left;line-height: 37px;">Coming Soon</button></div>
-            {% endif %}
-        </div>
-    </section>
-        <div class="newsletter-subscribe"
-        style="margin-bottom: 74px;">
-        <div class="container">
-            <div class="intro" >
-                <h2 class="text-center" style="padding: 1%;">Subscribe to our Newsletter</h2>
-                <p class="text-center" style="padding: 1%;">For the latest updates from All About Robotix!</p>
+            <div>
+                <p style="text-align: justify; font-size: 120%;">Research papers can often be cryptic and impossible to comprehend for those just getting started with Robotics, and sometimes even for seasoned academics. It can also be an extremely time-consuming process to read-through an entire research process only to realize that it wasn’t what you were really looking for. Or maybe you just want to keep up with the latest research but don’t want to spend hours reading a paper to do so. Do these situations sound familiar to you? Have you ever hoped there would be a platform where you had the gist of the paper elegantly summarized in an easy-to-understand manner? Look no further. We’re here to do just that.</p>
             </div>
-            <form class="form-inline" action="subscribe" style="justify-content: center;">
-                {% csrf_token %}
-                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Your Email"/></div>
-                <div class="form-group"><button class="btn btn-primary" type="submit">Subscribe </button></div>
-            </form>
-        </div>
-    </div>
+            <div class="block-content" style="padding: 5%;">
+                <p></p>
+                <p></p>
+                    {% if data|length != 0 %}
+                        {% for blog in data %}
+                            {% if blog.blog_type == 'Research' and blog.make_public %}
+                            <div class="clean-blog-post" style="padding-bottom: 70px;">
+                                <div class="row">
+                                    <div class="col-lg-5"><img class="rounded img-fluid" src="{{ blog.img.url }}"></div>
+                                    <div class="col-lg-7">
+                                        <h3>{{blog.title}}</h3>
+                                        <div class="info"><span class="text-muted">{{ blog.date_posted }}</span></div>
+                                        <p>{{ blog.abstract }}</p>
+                                        <button class="btn btn-outline-primary btn-sm" type="button">
+                                            <a href="{% url 'research_detail' blog.id %}">Go to post</a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </main>
     {% endblock %}
-    <script src="{% static 'research_simplified/assets/js/jquery.min.js' %}"></script>
-    <script src="{% static 'research_simplified/assets/bootstrap/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'research_simplified/assets/js/bs-init.js' %}"></script>
+    <script src="{% static 'blog/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'blog/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="{% static 'blog/assets/js/smoothproducts.min.js' %}"></script>
+    <script src="{% static 'blog/assets/js/theme.js' %}"></script>
 </body>
 
 </html>

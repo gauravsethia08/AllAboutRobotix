@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - All About Robotix</title>
+    <link rel="stylesheet" href="{% static 'iros_landing/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
+    <link rel="stylesheet" href="{% static 'iros_landing/assets/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'iros_landing/assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'iros_landing/assets/fonts/simple-line-icons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'iros_landing/assets/fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="{% static 'iros_landing/assets/css/Newsletter-Subscription-Form.css' %}">
+    <link rel="stylesheet" href="{% static 'iros_landing/assets/css/untitled.css' %}">
+</head>
+
+<body>
+    {% block content %}
+    <!-- TODO: SEEE  LATER -->
+    <header class="masthead text-white text-center" style="background: url('{% static 'iros_landing/assets/img/photos-hobby-rDxP1tF3CmA-unsplash.jpg' %}')no-repeat center center; background-size: cover; padding-top:12rem; padding-bottom:12rem;">
+        <div class="bg-info overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto" style="text-align: center;">
+                    <h1 style="text-align: center;"><strong>International Conference on Intelligent Robots and Systems&nbsp;</strong></h1>
+                    <h1>(IROS 2020)</h1>
+                    <h5 style="margin-top: 0px;padding-top: 6px;text-align: center;">Series of interactive summaries of latest workshops, tutorials and technical talks</h5>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="features-icons bg-light text-center" style="padding-top: 7rem; padding-bottom:7rem;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="mx-auto features-icons-item mb-5 mb-lg-0 mb-lg-3">
+                        <div class="d-flex features-icons-icon"><i class="icon-screen-desktop m-auto text-primary" data-bs-hover-animate="pulse"></i></div>
+                        <h3>Technical Talks</h3>
+                        <p class="lead mb-0">This theme will look great on any device, no matter the size!</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="mx-auto features-icons-item mb-5 mb-lg-0 mb-lg-3">
+                        <div class="d-flex features-icons-icon"><i class="icon-event m-auto text-primary" data-bs-hover-animate="pulse"></i></div>
+                        <h3>Workshops</h3>
+                        <p class="lead mb-0">Featuring the latest build of the new Bootstrap 4 framework!</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="mx-auto features-icons-item mb-5 mb-lg-0 mb-lg-3">
+                        <div class="d-flex features-icons-icon"><i class="icon-check m-auto text-primary" data-bs-hover-animate="pulse"></i></div>
+                        <h3>Tutorials</h3>
+                        <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <h1>{{queryset}}</h1>
+    <section class="showcase">
+        <div class="container-fluid p-0">
+            {% if data|length != 0 %}
+                {% for blog in data %}
+                    {% if blog.blog_type == "IROS" %}
+                        {% if blog.id|divisibleby:2 %}
+                            <div class="row no-gutters">
+                                <div class="col-lg-6 order-lg-2 text-white showcase-img"><img src = "{{ blog.img.url }}" style="width: 100%; height:100%;"><span></span></div>
+                                <div class="col-lg-6 my-auto order-lg-1 showcase-text" style="padding-right:7rem; padding-left:7rem;">
+                                    <h2 style="width: 546px;height: 38px;">{{blog.title}}</h2>
+                                    <p class="lead mb-0" style="height: 170px;text-align: justify;">{{ blog.abstract }}</p>
+                                    <div style="text-align: center;margin-top: 0px;">
+                                        <a href="{% url 'iros_detail' blog.id %}">
+                                            <i class="fa fa-chevron-circle-right" style="text-align: right;margin-top: 17px;font-size: 31px;"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="row no-gutters">
+                                <div class="col-lg-6 text-white showcase-img"><img src = "{{ blog.img.url }}" style="width: 100%; height:100%;"><span></span></div>
+                                <div class="col-lg-6 my-auto order-lg-1 showcase-text" style="padding-left:7rem; padding-right:7rem;">
+                                    <h2 style="width: 546px;height: 38px;">{{blog.title}}</h2>
+                                    <p class="lead mb-0" style="height: 170px;text-align: justify;">{{ blog.abstract }}</p>
+                                    <div style="text-align: center;margin-top: 0px;">
+                                        <a href="{% url 'iros_detail' blog.id %}">
+                                            <i class="fa fa-chevron-circle-right" style="text-align: right;margin-top: 17px;font-size: 31px;"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                <div style="text-align: center;margin-bottom: 41px;"><button class="btn btn-primary btn-sm text-center" data-bs-hover-animate="pulse" type="button" style="margin-top: 36px;font-size: 21px;text-align: left;line-height: 37px;">Continue reading&nbsp;&nbsp;</button></div>
+
+            {% else %}
+                <div style="text-align: center;margin-bottom: 41px;"><button class="btn btn-primary btn-sm text-center" data-bs-hover-animate="pulse" type="button" style="margin-top: 36px;font-size: 21px;text-align: left;line-height: 37px;">Coming Soon</button></div>
+            {% endif %}
+        </div>
+    </section>
+    <div class="newsletter-subscribe"
+        style="margin-bottom: 74px;">
+        <div class="container">
+            <div class="intro" >
+                <h2 class="text-center" style="padding: 1%;">Subscribe to our Newsletter</h2>
+                <p class="text-center" style="padding: 1%;">For the latest updates from All About Robotix!</p>
+            </div>
+            <form class="form-inline" action="subscribe" style="justify-content: center;">
+                {% csrf_token %}
+                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Your Email"></div>
+                <div class="form-group"><button class="btn btn-primary" type="submit">Subscribe </button></div>
+            </form>
+        </div>
+    </div>
+
+    {% endblock %}
+
+
+    <script src="{% static 'iros_landing/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'iros_landing/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'iros_landing/assets/js/bs-init.js' %}"></script>
+</body>
+
+</html>

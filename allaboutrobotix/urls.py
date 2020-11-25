@@ -18,9 +18,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+admin.site.site_header = "All About Robotix"
+admin.site.index_title = "Welcome to, AllAboutRobotix Admin"
+
 urlpatterns = [
     path('', include('home_page.urls')),
     path('account/', include('account.urls')),
+    path('courses/', include('courses.urls')),
     path('blog/', include('blog.urls')),
     path('admin/', admin.site.urls),
 ]

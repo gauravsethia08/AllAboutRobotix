@@ -1,9 +1,118 @@
 {% extends 'base.html' %}
-    {% block content%}
+{% load static %}
+{% load get_dicts %}
 
-        <iframe src="{{ blog.pdf_file.url }}" width="100%" height="100%"/>
+<!DOCTYPE html>
+<html>
 
-    
-        <!--script>PDFObject.embed("{{ blog.pdf_file.url }}", "#example1");</script-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Payment - Brand</title>
+    <link rel="stylesheet" href="{% static 'blog_post/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="{% static 'blog_post/assets/css/smoothproducts.css' %}">
+</head>
 
+<body>
+    {% block content %}
+    <main class="page payment-page">
+        <section class="clean-block payment-form dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h1 class="text-center" style="margin-top: 5%;">{{post.title}}</h1>
+                    <p class="text-center" style="font-size: 120%;"> {{ post.abstract }}</p>
+                </div>
+                <div class="products" style="margin-top: 5%; margin-bottom: 5%; font-size: 120%">{{ post.content|safe }}
+                </div>
+
+                <hr>
+
+                <h2 class="my-5">Comments ({{comments.count}}): </h2>
+
+                <form action="/blog/postComment" method="POST">
+                    {% csrf_token %}
+                    <textarea class="form-control" rows="3" placeholder="Comment" name="comment"></textarea>
+                    <br>
+                    <input type="hidden" name="postid" value="{{ post.id }}">
+                    {% if user.is_anonymous %}
+                    <input class="btn btn-primary my-2" type="submit" value="Comment" disabled> <i> Please Login to
+                        Comment</i>
+                    {% else %}
+                    <input class="btn btn-primary my-2" type="submit" value="Comment">
+                    {% endif %}
+                </form>
+                {% for c in comments %}
+                <div class="row my-3">
+                    <div class="col-md-1">
+                        {% if c.user.profile_img.url == 'None' %}
+                        <img class="img-circle" src="{% static 'user_profile/assets/img/dogs/image2.jpeg' %}"
+                            alt="user_img" style="width: 100%;">
+                        {% else %}
+                        <img class="img-circle" src="{{c.user.profile_img.url}}" alt="user_img" style="width: 100%;">
+                        {% endif %}
+                    </div>
+                    <div class="col-md-11"><b style="font-size: 130%;"> {{c.user.name}}</b>
+                        <i style="font-size: 80%;">{{c.timestamp | timesince }}</i>
+                        <br>
+                        {{c.comment}}
+
+                        <p>
+                            {% if user.is_anonymous %}
+                            <a class="" type="button" data-toggle="collapse" data-target="#collapseExample{{c.sno}}"
+                                aria-expanded="false" aria-controls="collapseExample{{c.sno}}" disabled>
+                                Login to Reply
+                            </a>
+                            {% else %}
+                            <a class="" type="button" data-toggle="collapse" data-target="#collapseExample{{c.sno}}"
+                                aria-expanded="false" aria-controls="collapseExample{{c.sno}}">
+                                Reply
+                            </a>
+                        </p>
+                        <div class="collapse" id="collapseExample{{c.sno}}">
+                            <form action="/blog/postComment" method="POST">
+                                {% csrf_token%}
+                                <textarea name="comment" rows="3"></textarea>
+                                <input type="hidden" name="parentsno" value="{{c.sno}}">
+                                <input type="hidden" name="postid" value="{{ post.id }}">
+                                <br>
+                                <input type="submit" class="btn btn-info my-3">
+                            </form>
+                        </div>
+                        {% endif %}
+                        <div class="my-3">
+                            {% for reply in replies|get_val:c.sno%}
+                            <div class="row my-3">
+                                <div class="col-md-1">
+                                    {% if c.user.profile_img.url == 'None' %}
+                                    <img class="img-circle"
+                                        src="{% static 'user_profile/assets/img/dogs/image2.jpeg' %}" alt="user_img"
+                                        style="width: 100%;">
+                                    {% else %}
+                                    <img class="img-circle" src="{{reply.user.profile_img.url}}" alt="user_img"
+                                        style="width: 100%;">
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-11"><b style="font-size: 130%;"> {{reply.user.name}}</b>
+                                    <i style="font-size: 80%;">{{reply.timestamp | timesince }}</i>
+                                    <br>
+                                    {{reply.comment}}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+        </section>
+
+    </main>
     {% endblock %}
+    <script src="{% static 'blog_post/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'blog_post/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="{% static 'blog_post/assets/js/smoothproducts.min.js' %}"></script>
+    <script src="{% static 'blog_post/assets/js/theme.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+    {% block content%}
+
+        <div>{{ blog.content|safe }}</div>
+
+    
+        <!--script>PDFObject.embed("{{ blog.pdf_file.url }}", "#example1");</script-->
+
+    {% endblock %}
