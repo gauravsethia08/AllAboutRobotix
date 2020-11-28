@@ -27,7 +27,7 @@ def login(request):
         if user is not None:
             auth_login(request, user)
         
-            messages.error(request, "Login Successful")
+            messages.success(request, "Login Successful")
             return redirect('/')
         
         else:
@@ -60,7 +60,7 @@ def register(request):
             else:
                 user = User.objects.create_user(email=email, password=password1, name=name)
                 user.save()
-                messages.error(request, "Registration Successfull")
+                messages.success(request, "Registration Successfull")
             return HttpResponseRedirect('login')
 
         else:
@@ -76,7 +76,7 @@ def register(request):
 
 def logout(request):
     auth_logout(request)
-    messages.error(request, "Logged Out")
+    messages.success(request, "Logged Out")
     return redirect('/')
 
 
@@ -89,7 +89,7 @@ def change_img(request):
     i_form = ImageUploadForm(request.POST, request.FILES, instance=request.user)
     if i_form.is_valid():
         i_form.save()
-        messages.error(request, "Profile Updated")
+        messages.success(request, "Profile Updated")
         return HttpResponseRedirect('user_profile')
 
 def update_personal(request):
@@ -109,7 +109,7 @@ def update_personal(request):
     curr_user.save()
 
     #Redirecting to the profile page
-    messages.error(request, "Profile Updated")
+    messages.success(request, "Profile Updated")
     return HttpResponseRedirect('user_profile')
 
 
@@ -128,7 +128,7 @@ def update_password(request):
 
         if new_password == confirm_password:
             curr_user.set_password(new_password)
-            messages.error(request, "Password Updated")
+            messages.success(request, "Password Updated")
         
         else:
             messages.error(request, "Password don't match")
@@ -159,5 +159,5 @@ def update_contact(request):
     curr_user.save()
 
     #Redirecting to the profile page
-    messages.error(request, "Profile Updated")
+    messages.success(request, "Profile Updated")
     return HttpResponseRedirect('user_profile')

@@ -45,7 +45,7 @@ def contact(request):
         contact_query = Contact(name = name, email = email, contact_no = number, message = msg)
         contact_query.save()
 
-        messages.error(request, "We have got your query. We will contact you shortly")
+        messages.success(request, "We have got your query. We will contact you shortly")
         return HttpResponseRedirect('/')
     else:
         return render(request, 'contact_us.html')

@@ -33,10 +33,10 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
+              <li class="nav-item {% block homeactive %} {% endblock homeactive %}">
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
               </li>
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown {% block courseactive %} {% endblock courseactive %}">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Courses</a>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="{% url 'kinematics' %}">Kinematics & Dynamics (Coming Soon)</a>
@@ -44,22 +44,22 @@
                   <a class="dropdown-item" href="{% url 'computer_vision' %}">Computer Vision (Coming Soon)</a>
                 </div>
               </li>
-              <li class="nav-item">
+              <li class="nav-item {% block researchactive %} {% endblock researchactive %}">
                 <a class="nav-link" href="{% url 'research' %}">Research Simplified</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item {% block techspresoactive %} {% endblock techspresoactive %}">
                 <a class="nav-link" href="{% url 'techspresso' %}">Techspresso</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item {% block irosactive %} {% endblock irosactive %}">
                 <a class="nav-link" href="{% url 'iros' %}">IROS 2020</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item {% block vrlactive %} {% endblock vrlactive %}">
                 <a class="nav-link" href="{% url 'lab' %}">Virtual Robotics Lab</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item {% block teamactive %} {% endblock teamactive %}">
                 <a class="nav-link" href="{% url 'team' %}">Team</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item {% block contactactive %} {% endblock contactactive %}">
                 <a class="nav-link" href="{% url 'contact' %}">Contact</a>
               </li>
             </ul>
@@ -71,7 +71,7 @@
       
             </form>
             {% if user.is_authenticated %}
-            <a class="navbar-brand" href="{% url 'profile'%}">Howdy, {{user.name}}</a>
+            <a class="navbar-brand" href="{% url 'profile' %}">Howdy, {{user.name}}</a>
               <a class="btn btn-outline-secondary mr-2" href="{% url 'logout' %}">Logout</a>
             {% else %}
               <a class="btn btn-outline-secondary mr-2" href="{% url 'login' %}">Login</a>

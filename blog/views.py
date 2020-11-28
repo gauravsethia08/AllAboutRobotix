@@ -11,7 +11,7 @@ from blog.templatetags import get_dicts
 
 class IROSListView(ListView):
     model = Blog#.objects.filter(blog_type="IROS")
-    queryset = Blog.objects.filter(blog_type="IROS")
+    #queryset = Blog.objects.filter(blog_type="IROS")
     template_name = 'iros_landing.html'
     context_object_name = 'data'
     ordering = ['-date_posted']
@@ -42,17 +42,17 @@ class IROSDetailView(DetailView):
     #    return Blog.objects.filter(title = self.title)[0]
 
     def get_context_data(self, **kwargs):
-       post = Blog.objects.filter(id = self.kwargs['pk']).first()
-       replies = BlogComment.objects.filter(post=post).exclude(parent=None).all()
-       replydict = {}
-       for reply in replies:
-            if reply.sno not in replydict.keys():
-               replydict[reply.sno] = [reply]
+        post = Blog.objects.filter(id = self.kwargs['pk']).first()
+        replies = BlogComment.objects.filter(post=post).exclude(parent=None).order_by('-timestamp').all()
+        replydict = {}
+        for reply in replies:
+            if reply.parent.sno in replydict:
+               replydict[reply.parent.sno].append(reply)
             else:
-                replydict[reply.sno].append(reply)
-            
-       context = { 'post': post, 'comments': BlogComment.objects.filter(post=post, parent=None).all(), 'replies': replydict, 'user': self.request.user}
-       return context
+               replydict[reply.parent.sno] = [reply]
+
+        context = { 'post': post, 'comments': BlogComment.objects.filter(post=post, parent=None).order_by('-timestamp').all(), 'replies': replydict, 'user': self.request.user}
+        return context
 
 class ResearchDetailView(DetailView):
     model = Blog #.objects.filter(blog_type="IROS")
@@ -66,17 +66,15 @@ class ResearchDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         post = Blog.objects.filter(id = self.kwargs['pk']).first()
-        replies = BlogComment.objects.filter(post=post).exclude(parent=None).all()
+        replies = BlogComment.objects.filter(post=post).exclude(parent=None).order_by('-timestamp').all()
         replydict = {}
         for reply in replies:
-            if reply.sno not in replydict.keys():
-               replydict[reply.parent.sno] = [reply]
+            if reply.parent.sno in replydict:
+               replydict[reply.parent.sno].append(reply)
             else:
-                replydict[reply.parent.sno].append(reply)
+               replydict[reply.parent.sno] = [reply]
 
-        print(replydict)
-            
-        context = { 'post': post, 'comments': BlogComment.objects.filter(post=post, parent=None).all(), 'replies': replydict, 'user': self.request.user}
+        context = { 'post': post, 'comments': BlogComment.objects.filter(post=post, parent=None).order_by('-timestamp').all(), 'replies': replydict, 'user': self.request.user}
         return context
 
 class TechDetailView(DetailView):
@@ -90,17 +88,17 @@ class TechDetailView(DetailView):
     #    return Blog.objects.filter(title = self.title)[0]
 
     def get_context_data(self, **kwargs):
-       post = Blog.objects.filter(id = self.kwargs['pk']).first()
-       replies = BlogComment.objects.filter(post=post).exclude(parent=None).all()
-       replydict = {}
-       for reply in replies:
-            if reply.sno not in replydict.keys():
-               replydict[reply.sno] = [reply]
+        post = Blog.objects.filter(id = self.kwargs['pk']).first()
+        replies = BlogComment.objects.filter(post=post).exclude(parent=None).order_by('-timestamp').all()
+        replydict = {}
+        for reply in replies:
+            if reply.parent.sno in replydict:
+               replydict[reply.parent.sno].append(reply)
             else:
-                replydict[reply.sno].append(reply)
-            
-       context = { 'post': post, 'comments': BlogComment.objects.filter(post=post, parent=None).all(), 'replies': replydict, 'user': self.request.user}
-       return context
+               replydict[reply.parent.sno] = [reply]
+
+        context = { 'post': post, 'comments': BlogComment.objects.filter(post=post, parent=None).order_by('-timestamp').all(), 'replies': replydict, 'user': self.request.user}
+        return context
 
 
 def subscribe(request):
@@ -112,7 +110,7 @@ def subscribe(request):
 
         print(request.path)
         messages.success(request, "Thank You for Subscribing")
-        return redirect('/')
+        return redirect(request.META.get('HTTP_REFERER'))
 
 
 def postComment(request):
@@ -123,16 +121,16 @@ def postComment(request):
         post = Blog.objects.get(id=postId)
         parentSno = request.POST.get('parentsno')
 
-        if parentSno == "":
+
+        if parentSno is None:
             blogComment = BlogComment(comment=comment, user=user, post=post)
             blogComment.save()
-            messages.success(request, "Comment Posted")
-            return redirect('/')
+            #messages.success(request, "Comment Posted")
         
         else:
-            print(parentSno)
             parent = BlogComment.objects.get(sno=parentSno)
             blogComment = BlogComment(comment=comment, user=user, post=post, parent=parent)
             blogComment.save()
-            messages.success(request, "Reply Posted")
-            return redirect('/')
+            #messages.success(request, "Reply Posted")
+        
+        return redirect(request.META.get('HTTP_REFERER'))
