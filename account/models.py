@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 from django.utils import timezone
+from courses.models import Course, Module, ModuleContent
 
 class UserManager(BaseUserManager):
 
@@ -45,8 +46,7 @@ class User(AbstractBaseUser, PermissionsMixin):
   is_active = models.BooleanField(default=True)
   last_login = models.DateTimeField(null=True, blank=True)
   date_joined = models.DateTimeField(auto_now_add=True)
-  num_course_taken = models.IntegerField(default=0)
-  num_course_completed = models.IntegerField(default=0)
+  
 
   USERNAME_FIELD = 'email'
   EMAIL_FIELD = 'email'
@@ -56,4 +56,26 @@ class User(AbstractBaseUser, PermissionsMixin):
 
   def get_absolute_url(self):
       return "/users/%i/" % (self.pk)
+
+
+
+class Enrollment(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    course_id = models.ForeignKey(Course, on_delete=models.CASCADE)
+    enroll_date = models.DateField(default=timezone.now)
+
+    def __str__(self):
+      text = self.user_id.name + '-' + self.course_id.course_title
+      return text
+
+
+class learning_progress(models.Model):
+    enroll_id = models.ForeignKey(Enrollment,on_delete=models.CASCADE)
+    status = models.IntegerField(default=0)
+
+    def __str__(self):
+      text = self.enroll_id.user_id.name + '-' + self.enroll_id.course_id.course_title + '-' + str(self.status)
+      return text
+
+
 

@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 #from .models import extendedUser
-from .models import User
+from .models import User, Enrollment, learning_progress
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate
@@ -10,6 +10,7 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from .forms import ImageUploadForm
+
 
 # Create your views here.
 def login(request):
@@ -83,7 +84,20 @@ def logout(request):
 @login_required
 def profile(request):
     i_form = ImageUploadForm()
-    return render(request, 'profile.html', {'form': i_form})
+    
+    #Get current user
+    user = request.user
+
+    #Getting the enrollments
+    courses_enrolled = Enrollment.objects.filter(user_id=user).all()
+    course = []
+    learning_completed = []
+    for course_enrolled in courses_enrolled:
+        learning = learning_progress.objects.filter(enroll_id=course_enrolled).first()
+
+        course.append([course_enrolled.course_id.course_title, learning.status])
+
+    return render(request, 'profile.html', {'form': i_form, 'data': course})
 
 def change_img(request):
     i_form = ImageUploadForm(request.POST, request.FILES, instance=request.user)
